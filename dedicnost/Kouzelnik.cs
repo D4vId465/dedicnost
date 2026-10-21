@@ -11,7 +11,7 @@ namespace Dedicnost
         }
         
         public int ManaMax { get; private set; }
-        public Kouzelnik(string jmeno, int mana, int manaMax) : base(jmeno)
+        public Kouzelnik(int id, string jmeno, int mana, int manaMax) : base(jmeno, id)
         {
             Mana = mana;
             ManaMax = manaMax;

@@ -1,9 +1,24 @@
 namespace Dedicnost
 {
+
+    /// <summary>
+    /// Bojovník je třída, která dědí z třídy Postava a přidává specifické vlastnosti a metody pro bojovníka, jako je zbraň a schopnost zvednout štít.
+    /// </summary>
     class Bojovnik : Postava
     {
+
+        /// <summary>
+        /// obsahuje zvolenou zbraň bojovníka, která je použita při útoku.
+        /// </summary>
         private string zbran;
-        public Bojovnik(string jmeno, string zbran) : base(jmeno)
+
+        /// <summary>
+        /// vytvoří nového bojovníka
+        /// </summary>
+        /// <param name="id">Jednoznačný identifikátor bojovníka</param>
+        /// <param name="jmeno">Jméno bojovníka</param>
+        /// <param name="zbran">Zbraň bojovníka</param>
+        public Bojovnik(int id, string jmeno, string zbran) : base(jmeno, id)
         {
             this.zbran = zbran;
         }
