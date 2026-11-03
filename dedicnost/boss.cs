@@ -1,3 +1,20 @@
+public class Postava
+{
+    public string Jmeno { get; private set; }
+    public int Id { get; private set; }
+
+    public Postava(string jmeno, int id)
+    {
+        Jmeno = jmeno;
+        Id = id;
+    }
+
+    public virtual void Utoc()
+    {
+        Console.WriteLine($"{Jmeno} útočí!");
+    }
+}
+
 /// <summary>
 /// Představuje silného nepřítele (Bosse) v počítačové hře.
 /// Boss má jméno, počet životů a několik fází souboje.
@@ -9,7 +26,7 @@ public class Boss : Postava
     /// <summary>
     /// Jméno bosse.
     /// </summary>
-    // SEM DOPLŇ VLASTNOST
+    public string JmenoBoss { get; private set; }
 
 
     /// <summary>
@@ -24,7 +41,7 @@ public class Boss : Postava
     /// Aktuální fáze souboje.
     /// Výchozí hodnota je 1.
     /// </summary>
-    public int Faze { get;private set; } = 1;
+    public int Faze { get; private set; } = 1;
 
 
     /// <summary>
@@ -33,9 +50,9 @@ public class Boss : Postava
     /// </summary>
     /// <param name="jmeno">Jméno bosse.</param>
     /// <param name="zivoty">Počáteční počet životů.</param>
-    /// <param name="zivoty">Počáteční počet životů.</param>
     public Boss(int id, string jmeno, int zivoty) : base(jmeno, id)
     {
+        this.JmenoBoss = jmeno;
         this.Zivoty = zivoty;
         this.aktualniZivoty = zivoty;
     }
@@ -51,7 +68,7 @@ public class Boss : Postava
     /// </remarks>
     public override void Utoc()
     {
-        switch (Faze)
+           switch (Faze)
         {
             case 1:
                 Console.WriteLine($"boss útočí mečem!");
@@ -131,5 +148,18 @@ public class Boss : Postava
     /// <returns>
     /// Celkové poškození po zohlednění fáze bosse.
     /// </returns>
-    // SEM DOPLŇ METODU
+    public int VypocitejPoskozeni(int zakladniPoskozeni)
+    {
+        switch (Faze)
+        {
+            case 1:
+                return zakladniPoskozeni;
+            case 2:
+                return (int)(zakladniPoskozeni * 1.5);
+            case 3:
+                return zakladniPoskozeni * 2;
+            default:
+                return zakladniPoskozeni;
+        }
+    }
 }
