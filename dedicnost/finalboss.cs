@@ -39,8 +39,31 @@ public sealed class FinalBoss : Boss
 
     public int VypocitejPoskozeni(int zakladniPoskozeni)
     {
-        int (zakladniposkozeni < 0)
-        throw
+        if (zakladniPoskozeni < 0)
+            throw new ArgumentException("Základní poškození nemůže být záporné.", nameof(zakladniPoskozeni));
+
+        int poskozeni = zakladniPoskozeni * Faze;
+
+
+        if (BojovyRezim)
+        {
+            poskozeni *= 2; // Přidání bonusového poškození v bojovém režimu
+        }
+        return poskozeni;
+    }
+
+    public int VypocitejObranu(int poskozeni)
+    {
+        if (poskozeni < 0)
+            throw new ArgumentException("Poškození nemůže být záporné.", nameof(poskozeni));
+
+        return poskozeni * (100 - Pancir) / 100;
+
+    }
+
+    public void VypisInformace()
+    {
+        Console.WriteLine($"Final Boss: {Jmeno}, Zivoty: {Zivoty}, Faze: {Faze}, Pancir: {Pancir}, Pocet Utoku: {PocetUtoku}, Bojovy Rezim: {BojovyRezim}");
     }
 
 }

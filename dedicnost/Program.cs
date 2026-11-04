@@ -10,12 +10,19 @@
             legie[0] = new Bojovnik(1, "Aragorn", "Meč");
             legie[1] = new Bojovnik(2, "Legolas", "Meč");
 
-            Postava Terminator = new Boss(3, "Terminator", 1000);
+            Boss Terminator = new Boss(3, "Terminator", 1000);
             Bojovnik Barbar = new Bojovnik(1, "Aragorn", "Meč");
             Kouzelnik Mage = new Kouzelnik(2, "Gandalf", 9, 100);
+            FinalBoss GaroshHellscream = new FinalBoss(4, "Garosh Hellscream", 10000, 11);
+
+            GaroshHellscream.VypisInformace();
+            GaroshHellscream.PrepniBojovyRezim();
+            GaroshHellscream.Utoc();
+            GaroshHellscream.VypisInformace();
+
+            Console.WriteLine($"Poškození: {GaroshHellscream.VypocitejPoskozeni(100)}");
 
 
-            Terminator.PredstavSe();
             Terminator.Utoc();
             Terminator.Zastras();
             Barbar.PredstavSe();
@@ -24,6 +31,7 @@
 
             Mage.PredstavSe();
             Mage.Utoc();
+            
             
             Console.WriteLine(Barbar.Jmeno);
 
