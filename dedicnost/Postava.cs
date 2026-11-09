@@ -1,6 +1,6 @@
 namespace Dedicnost
 {
-    class Postava
+    abstract class Postava
     {
         private string jmeno;
         private int id;
@@ -19,10 +19,7 @@ namespace Dedicnost
             this.jmeno = jmeno;
             this.id = id;
         }
-        public virtual void Utoc()
-        {
-            Console.WriteLine(jmeno + " útočí!");
-        }
+        public abstract void Utoc();
         public void PredstavSe()
         {
             Console.WriteLine("Jmenuji se " + jmeno + ".");

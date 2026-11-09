@@ -10,6 +10,18 @@
             legie[0] = new Bojovnik(1, "Aragorn", "Meč");
             legie[1] = new Bojovnik(2, "Legolas", "Meč");
 
+            // Postava postava = new Postava(22, "Test", 1);
+            List<Postava> postavy = new List<Postava>
+            {
+                new Bojovnik(1, "Aragorn", "Meč"),
+                new Kouzelnik(2, "Gandalf", 9, 100),
+                new Boss(3, "Terminator", 1000)
+            };
+            foreach (Postava postava in postavy)
+            {
+                postava.PredstavSe();
+                postava.Utoc();
+            }
             Boss Terminator = new Boss(3, "Terminator", 1000);
             Bojovnik Barbar = new Bojovnik(1, "Aragorn", "Meč");
             Kouzelnik Mage = new Kouzelnik(2, "Gandalf", 9, 100);

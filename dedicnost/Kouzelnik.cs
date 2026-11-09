@@ -29,6 +29,8 @@ namespace Dedicnost
             }
 
         }
+
+        
         public void Meditace()
         {
             Console.WriteLine("Kouzelník medituje a obnovuje manu co 2 sekundy.");

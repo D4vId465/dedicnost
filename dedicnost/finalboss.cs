@@ -1,69 +1,93 @@
-public sealed class FinalBoss : Boss
+namespace Dedicnost
 {
 
-    public int Pancir { get; private set;}
-
-    public int PocetUtoku { get; private set; } = 0;
-
-    public bool BojovyRezim { get; private set ; } = false;
-    public FinalBoss(int id, string jmeno, int zivoty, int pancir) : base(id, jmeno, zivoty)
+    public class Boss
     {
-        Pancir = pancir;
-    }
-        public override void Utoc()
-    {
-        PocetUtoku++;
-        
-        switch (Faze)
+        public int Id { get; }
+        public string Jmeno { get; }
+        public int Zivoty { get; protected set; }
+        public int Faze { get; protected set; } = 1;
+
+        public Boss(int id, string jmeno, int zivoty)
         {
-            case 1:
-                Console.WriteLine($"boss útočí mečem!");
-                break;
-            case 2:
-                Console.WriteLine($"boss používá ohnivý útok!");
-                break;
-            case 3:
-                Console.WriteLine($"boss používá smrtící kouzlo!");
-                break;
-            default:
-                base.Utoc();
-                break;
+            Id = id;
+            Jmeno = jmeno;
+            Zivoty = zivoty;
+        }
+
+        public virtual void Utoc()
+        {
+            Console.WriteLine($"{Jmeno} útočí!");
         }
     }
 
-    public void PrepniBojovyRezim()
+    public sealed class FinalBoss : Boss
     {
-        BojovyRezim = !BojovyRezim;
-        Console.WriteLine($"Final boss {(BojovyRezim ? "aktivuje" : "deaktivuje")} bojový režim!");
-    }
 
-    public int VypocitejPoskozeni(int zakladniPoskozeni)
-    {
-        if (zakladniPoskozeni < 0)
-            throw new ArgumentException("Základní poškození nemůže být záporné.", nameof(zakladniPoskozeni));
+        public int Pancir { get; private set;}
 
-        int poskozeni = zakladniPoskozeni * Faze;
+        public int PocetUtoku { get; private set; } = 0;
 
-
-        if (BojovyRezim)
+        public bool BojovyRezim { get; private set ; } = false;
+        public FinalBoss(int id, string jmeno, int zivoty, int pancir) : base(id, jmeno, zivoty)
         {
-            poskozeni *= 2; // Přidání bonusového poškození v bojovém režimu
+            Pancir = pancir;
         }
-        return poskozeni;
+            public override void Utoc()
+        {
+            PocetUtoku++;
+            
+            switch (Faze)
+            {
+                case 1:
+                    Console.WriteLine($"boss útočí mečem!");
+                    break;
+                case 2:
+                    Console.WriteLine($"boss používá ohnivý útok!");
+                    break;
+                case 3:
+                    Console.WriteLine($"boss používá smrtící kouzlo!");
+                    break;
+                default:
+                    base.Utoc();
+                    break;
+            }
+        }
+
+        public void PrepniBojovyRezim()
+        {
+            BojovyRezim = !BojovyRezim;
+            Console.WriteLine($"Final boss {(BojovyRezim ? "aktivuje" : "deaktivuje")} bojový režim!");
+        }
+
+        public int VypocitejPoskozeni(int zakladniPoskozeni)
+        {
+            if (zakladniPoskozeni < 0)
+                throw new ArgumentException("Základní poškození nemůže být záporné.", nameof(zakladniPoskozeni));
+
+            int poskozeni = zakladniPoskozeni * Faze;
+
+
+            if (BojovyRezim)
+            {
+                poskozeni *= 2; // Přidání bonusového poškození v bojovém režimu
+            }
+            return poskozeni;
+        }
+
+        public int VypocitejObranu(int poskozeni)
+        {
+            if (poskozeni < 0)
+                throw new ArgumentException("Poškození nemůže být záporné.", nameof(poskozeni));
+
+            return poskozeni * (100 - Pancir) / 100;
+
+        }
+
+        public void VypisInformace()
+        {
+            Console.WriteLine($"Final Boss: {Jmeno}, Zivoty: {Zivoty}, Faze: {Faze}, Pancir: {Pancir}, Pocet Utoku: {PocetUtoku}, Bojovy Rezim: {BojovyRezim}");
+        }
+
     }
-
-    public int VypocitejObranu(int poskozeni)
-    {
-        if (poskozeni < 0)
-            throw new ArgumentException("Poškození nemůže být záporné.", nameof(poskozeni));
-
-        return poskozeni * (100 - Pancir) / 100;
-
-    }
-
-    public void VypisInformace()
-    {
-        Console.WriteLine($"Final Boss: {Jmeno}, Zivoty: {Zivoty}, Faze: {Faze}, Pancir: {Pancir}, Pocet Utoku: {PocetUtoku}, Bojovy Rezim: {BojovyRezim}");
-    }
-
 }
