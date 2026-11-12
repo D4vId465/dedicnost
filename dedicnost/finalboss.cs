@@ -1,23 +1,24 @@
 namespace Dedicnost
 {
 
-    public class Boss
+    public class Boss : Postava
     {
-        public int Id { get; }
-        public string Jmeno { get; }
         public int Zivoty { get; protected set; }
         public int Faze { get; protected set; } = 1;
 
-        public Boss(int id, string jmeno, int zivoty)
+        public Boss(int id, string jmeno, int zivoty) : base(jmeno, id)
         {
-            Id = id;
-            Jmeno = jmeno;
             Zivoty = zivoty;
         }
 
-        public virtual void Utoc()
+        public override void Utoc()
         {
             Console.WriteLine($"{Jmeno} útočí!");
+        }
+
+        public void Zastras()
+        {
+            Console.WriteLine("Boss: Připrav se na porážku!");
         }
     }
 

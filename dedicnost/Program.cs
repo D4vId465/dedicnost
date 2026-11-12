@@ -15,13 +15,12 @@
             {
                 new Bojovnik(1, "Aragorn", "Meč"),
                 new Kouzelnik(2, "Gandalf", 9, 100),
-                new Boss(3, "Terminator", 1000)
+                new Boss(3, "Terminator", 1000),
+                new FinalBoss(4, "Garosh Hellscream", 10000, 11)
             };
-            foreach (Postava postava in postavy)
-            {
-                postava.PredstavSe();
-                postava.Utoc();
-            }
+            foreach (Postava postava in postavy) postava.Utoc();
+
+
             Boss Terminator = new Boss(3, "Terminator", 1000);
             Bojovnik Barbar = new Bojovnik(1, "Aragorn", "Meč");
             Kouzelnik Mage = new Kouzelnik(2, "Gandalf", 9, 100);

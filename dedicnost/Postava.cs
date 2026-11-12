@@ -1,6 +1,6 @@
 namespace Dedicnost
 {
-    abstract class Postava
+    public abstract class Postava
     {
         private string jmeno;
         private int id;

@@ -1,10 +1,12 @@
 namespace dedicnost
 {
-
+    /// <summary>
+    /// Základní třída pro všechny postavy ve hře.
+    /// </summary>
     public class Postava
     {
-        public string Jmeno { get; private set; }
-        public int Id { get; private set; }
+        public string Jmeno { get; protected set; }
+        public int Id { get; protected set; }
 
         public Postava(string jmeno, int id)
         {
@@ -14,7 +16,7 @@ namespace dedicnost
 
         public virtual void Utoc()
         {
-            Console.WriteLine($"{Jmeno} útočí!");
+            Console.WriteLine("Postava útočí!");
         }
     }
 
