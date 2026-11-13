@@ -1,28 +1,6 @@
 namespace Dedicnost
 {
-
-    public class Boss : Postava
-    {
-        public int Zivoty { get; protected set; }
-        public int Faze { get; protected set; } = 1;
-
-        public Boss(int id, string jmeno, int zivoty) : base(jmeno, id)
-        {
-            Zivoty = zivoty;
-        }
-
-        public override void Utoc()
-        {
-            Console.WriteLine($"{Jmeno} útočí!");
-        }
-
-        public void Zastras()
-        {
-            Console.WriteLine("Boss: Připrav se na porážku!");
-        }
-    }
-
-    public sealed class FinalBoss : Boss
+    public class FinalBoss : Boss
     {
 
         public int Pancir { get; private set;}

@@ -1,6 +1,6 @@
 namespace Dedicnost
 {
-    class Kouzelnik : Postava
+    public class Kouzelnik : Postava
     {
         private int mana;
 

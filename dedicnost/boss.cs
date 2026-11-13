@@ -1,25 +1,5 @@
-namespace dedicnost
+namespace Dedicnost
 {
-    /// <summary>
-    /// Základní třída pro všechny postavy ve hře.
-    /// </summary>
-    public class Postava
-    {
-        public string Jmeno { get; protected set; }
-        public int Id { get; protected set; }
-
-        public Postava(string jmeno, int id)
-        {
-            Jmeno = jmeno;
-            Id = id;
-        }
-
-        public virtual void Utoc()
-        {
-            Console.WriteLine("Postava útočí!");
-        }
-    }
-
     /// <summary>
     /// Představuje silného nepřítele (Bosse) v počítačové hře.
     /// Boss má jméno, počet životů a několik fází souboje.
@@ -85,7 +65,6 @@ namespace dedicnost
                     Console.WriteLine($"boss používá smrtící kouzlo!");
                     break;
                 default:
-                    base.Utoc();
                     break;
             }
         }
